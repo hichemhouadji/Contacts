@@ -24,7 +24,6 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return super.getView(position, convertView, parent);
         convertView = LayoutInflater.from(context).inflate(resource, parent, false);
 
         TextView tvname= (TextView) convertView.findViewById(R.id.tvname);
