@@ -5,10 +5,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/phone"
-        android:label="@string/app_name"
+        android:label="HichemContact"
         android:roundIcon="@color/colorPrimary"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Update"></activity>
+        <activity android:name=".AddContact" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

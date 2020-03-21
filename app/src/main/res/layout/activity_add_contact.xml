@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddContact"
+    android:gravity="center"
+    android:padding="20dp"
+    android:orientation="vertical">
+ <EditText
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/edit_name1"
+     android:hint="entre your name">
+    </EditText>
+       <EditText android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_phone1"
+        android:hint="entre your numbre">
+ </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnadd1"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:text="Confirme add "
+        android:textColor="#ffff">
+
+    </Button>
+</LinearLayout>
