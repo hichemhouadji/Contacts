@@ -45,6 +45,9 @@ getMenuInflater().inflate(R.menu.deletmenu,menu);
            @Override
            public void onClick(DialogInterface dialog, int which) {
                //delet contact
+               /*
+
+                */
            }
        })
                .setNegativeButton("no", new DialogInterface.OnClickListener() {

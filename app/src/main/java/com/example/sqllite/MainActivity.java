@@ -14,24 +14,18 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 ListView contactlist;
 Button btnadd;
+DBContact db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnadd=(Button)findViewById(R.id.btnadd);
+        db=new DBContact(this);
 contactlist=(ListView) findViewById(R.id.contact);
-        ArrayList<Contact> contacts= new ArrayList<>();
-        contacts.add(new Contact("contact1",113123565));
-        contacts.add(new Contact("contact1",113123567));
-        contacts.add(new Contact("contact1",113123568));
-        contacts.add(new Contact("contact1",113123569));
-        contacts.add(new Contact("contact1",113123561));
-        contacts.add(new Contact("contact1",113123565));
-        contacts.add(new Contact("contact1",113123560));
-        contacts.add(new Contact("contact1",113123568));
 
-ContactAdapter contactAdapter=new ContactAdapter(this,R.layout.item_list,contacts);
-contactlist.setAdapter(contactAdapter);
+
+
+
 btnadd.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -48,4 +42,11 @@ contactlist.setOnClickListener(new View.OnClickListener() {
 });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ArrayList<Contact> contacts=  db.getAllContact;
+        ContactAdapter contactAdapter=new ContactAdapter(this,R.layout.item_list,contacts);
+        contactlist.setAdapter(contactAdapter);
+    }
 }
