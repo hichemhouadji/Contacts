@@ -9,7 +9,7 @@
         android:roundIcon="@color/colorPrimary"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Update"/>
+        <activity android:name=".Update"></activity>
         <activity android:name=".AddContact" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -19,10 +19,21 @@ public class Contact {
 
     private  String name;
     private int  phone ;
+    private int  id ;
 
-    public Contact(String name, int phone) {
+
+    public Contact(int id,String name, int phone) {
+        this.id = id;
         this.name = name;
         this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

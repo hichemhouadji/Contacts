@@ -42,13 +42,16 @@ public class DBContact extends SQLiteOpenHelper {
         values.put(KEY_name, contact.getName());
         values.put(KEY_phone, contact.getPhone());
 
+
+
+
         db.insert(TABLE_contacts, null, values);
     }
 
     public ArrayList<Contact> getAllContact() {
 
         ArrayList<Contact> contacts = new ArrayList<>();
-        String selectquery = "select * from " + TABLE_contacts + "";
+        String selectquery = "select * from " + TABLE_contacts ;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectquery, null);
         if (cursor.moveToFirst()) {
@@ -56,7 +59,8 @@ public class DBContact extends SQLiteOpenHelper {
                 int id =cursor.getInt(cursor.getColumnIndex(KEY_id));
                 String name = cursor.getString(cursor.getColumnIndex(KEY_name));
                 int phone = cursor.getInt(cursor.getColumnIndex(KEY_phone));
-                Contact contact = new Contact(name, phone);
+                Contact contact=new Contact(id, name, phone);
+
                 contacts.add(contact);
 
             } while (cursor.moveToNext());
@@ -72,10 +76,11 @@ public Contact getContactById(int id){
 
     Contact contact=null;
     if (cursor.moveToFirst()) {
-int idcontact =cursor.getInt(cursor.getColumnIndex(KEY_id));
+        int idcontact =cursor.getInt(cursor.getColumnIndex(KEY_id));
         String name =cursor.getString(cursor.getColumnIndex(KEY_name));
         int phone =cursor.getInt(cursor.getColumnIndex(KEY_phone));
-         contact = new Contact(name, phone);
+
+        contact = new Contact(idcontact,name, phone);
     }
     return contact;
 }

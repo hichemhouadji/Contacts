@@ -27,7 +27,8 @@ DBContact db;
         public void onClick(View v) {
             String name=editname.getText().toString();
             int phone=Integer.parseInt( editphone.getText().toString());
-            Contact contact=new Contact(name,phone);
+            int id=Integer.parseInt( editphone.getText().toString());
+            Contact contact=new Contact(id,name,phone);
             db.Addcontact(contact);
             Toast.makeText(AddContact.this,"contact added",Toast.LENGTH_LONG).show();
         }

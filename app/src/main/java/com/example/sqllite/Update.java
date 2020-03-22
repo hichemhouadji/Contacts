@@ -9,13 +9,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 public class Update extends AppCompatActivity {
-
+DBContact db;
+EditText editname,editphone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        int id=getIntent().getIntExtra("id",0);
+        db=new DBContact(this);
+
+
+        Contact contact=db.getContactById(id);
+        editname=(EditText)findViewById(R.id.edit_name);
+        editphone=(EditText)findViewById(R.id.edit_phone);
+        editphone.setText(String.valueOf(contact.getPhone()));
+        editname.setText(contact.getName());
     }
 
     @Override
