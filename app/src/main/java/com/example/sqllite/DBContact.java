@@ -84,4 +84,17 @@ public Contact getContactById(int id){
     }
     return contact;
 }
+
+public void updatecontact(Contact contact){
+
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(KEY_name,contact.getName());
+        values.put(KEY_phone,contact.getPhone());
+
+    db.update(TABLE_contacts,values,"id=?",new String[]{String.valueOf(contact.getId())});
+}
+
+
+
 }

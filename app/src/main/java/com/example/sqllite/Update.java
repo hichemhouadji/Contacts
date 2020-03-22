@@ -9,16 +9,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Update extends AppCompatActivity {
 DBContact db;
 EditText editname,editphone;
+Button btnUpdate;
+int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-        int id=getIntent().getIntExtra("id",0);
+         id=getIntent().getIntExtra("id",0);
         db=new DBContact(this);
 
 
@@ -27,6 +31,18 @@ EditText editname,editphone;
         editphone=(EditText)findViewById(R.id.edit_phone);
         editphone.setText(String.valueOf(contact.getPhone()));
         editname.setText(contact.getName());
+        btnUpdate=(Button)findViewById(R.id.btnadd);
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name=editname.getText().toString();
+                int phone=Integer.parseInt(editphone.getText().toString());
+                Contact newcontact=new Contact(id,name,phone);
+                db.updatecontact(newcontact);
+                Toast.makeText(Update.this,"contact updated with succes",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
