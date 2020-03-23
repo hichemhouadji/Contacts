@@ -38,7 +38,7 @@ int id;
             public void onClick(View v) {
                 String name=editname.getText().toString();
                 int phone=Integer.parseInt(editphone.getText().toString());
-                Contact newcontact=new Contact(id,name,phone);
+                Contact newcontact=new Contact(name,phone);
                 db.updatecontact(newcontact);
                 Toast.makeText(Update.this,"contact updated with succes",Toast.LENGTH_LONG).show();
             }
@@ -72,9 +72,8 @@ getMenuInflater().inflate(R.menu.deletmenu,menu);
            @Override
            public void onClick(DialogInterface dialog, int which) {
                //delet contact
-               /*
-
-                */
+               db.deletContact(id);
+               finish();
            }
        })
                .setNegativeButton("no", new DialogInterface.OnClickListener() {

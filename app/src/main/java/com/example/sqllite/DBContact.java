@@ -16,6 +16,7 @@ public class DBContact extends SQLiteOpenHelper {
     final private static String KEY_id = "id";
     final private static String KEY_name = "name";
     final private static String KEY_phone = "phone";
+    final private static String KEY_img = "image";
     final private static String TABLE_contacts = "contacts";
 
 
@@ -25,7 +26,7 @@ public class DBContact extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createtable = "create table " + TABLE_contacts + "(" + KEY_id + " integer  primary key," + KEY_name + " varchar(30)," + KEY_phone + " integer)";
+        String createtable = "create table " + TABLE_contacts + "(" + KEY_id + " integer  primary key," + KEY_name + " varchar(30)," + KEY_phone + " integer,"+KEY_img+" blob)";
         db.execSQL(createtable);
     }
 
@@ -59,7 +60,8 @@ public class DBContact extends SQLiteOpenHelper {
                 int id =cursor.getInt(cursor.getColumnIndex(KEY_id));
                 String name = cursor.getString(cursor.getColumnIndex(KEY_name));
                 int phone = cursor.getInt(cursor.getColumnIndex(KEY_phone));
-                Contact contact=new Contact(id, name, phone);
+                byte[] img=cursor.getBlob(cursor.getColumnIndex(KEY_img));
+                Contact contact=new Contact(id, name, phone,img);
 
                 contacts.add(contact);
 
@@ -79,8 +81,10 @@ public Contact getContactById(int id){
         int idcontact =cursor.getInt(cursor.getColumnIndex(KEY_id));
         String name =cursor.getString(cursor.getColumnIndex(KEY_name));
         int phone =cursor.getInt(cursor.getColumnIndex(KEY_phone));
+        byte[] img=cursor.getBlob(cursor.getColumnIndex(KEY_img));
 
-        contact = new Contact(idcontact,name, phone);
+
+        contact = new Contact(idcontact,name, phone,img);
     }
     return contact;
 }
@@ -94,7 +98,10 @@ public void updatecontact(Contact contact){
 
     db.update(TABLE_contacts,values,"id=?",new String[]{String.valueOf(contact.getId())});
 }
-
+public  void  deletContact(int id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.delete(TABLE_contacts,"id=?",new String[]{String.valueOf(id)});
+}
 
 
 }
