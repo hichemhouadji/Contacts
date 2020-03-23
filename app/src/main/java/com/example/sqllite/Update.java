@@ -38,7 +38,7 @@ int id;
             public void onClick(View v) {
                 String name=editname.getText().toString();
                 int phone=Integer.parseInt(editphone.getText().toString());
-                Contact newcontact=new Contact(name,phone);
+                Contact newcontact=new Contact(id,name,phone);
                 db.updatecontact(newcontact);
                 Toast.makeText(Update.this,"contact updated with succes",Toast.LENGTH_LONG).show();
             }

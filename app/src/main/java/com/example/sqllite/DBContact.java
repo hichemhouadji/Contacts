@@ -43,9 +43,6 @@ public class DBContact extends SQLiteOpenHelper {
         values.put(KEY_name, contact.getName());
         values.put(KEY_phone, contact.getPhone());
 
-
-
-
         db.insert(TABLE_contacts, null, values);
     }
 
